@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "domain": "qingping_air_wifi",
+  "name": "Qingping Air wifi",
+  "documentation": "https://www.home-assistant.io/integrations/qingping_air_wifi",
+  "requirements": [
+    "authlib"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@expl0it"
+  ],
+  "iot_class": "cloud_polling"
+}
