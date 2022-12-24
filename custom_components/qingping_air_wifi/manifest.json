@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "domain": "qingping_air_wifi",
   "name": "Qingping Air wifi",
-  "documentation": "https://www.home-assistant.io/integrations/qingping_air_wifi",
+  "documentation": "",
   "requirements": [
     "authlib"
   ],
