@@ -7,7 +7,7 @@ That integration intended for using with [Qingping Air with wifi](https://www.qi
 ## Install and setup the component
 
 * Copy the entire `qingping_air_wifi` directory to the `custom_components` folder of your Home Assistant installation. If you can't find the `custom_components` directory at the same level with your `configuration.yml` — simply create it yourself and put `qingping_air_wifi` there.
-* Go to your [personal account > Access management)(<https://developer.qingping.co/personal/permissionApply>)
+* Go to your [personal account > Access management](<https://developer.qingping.co/personal/permissionApply>)
 * Copy `App Key` and `App Secret`
 * Open `secrets.yaml` and paste your credentials in the same way:
 
