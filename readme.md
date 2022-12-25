@@ -26,3 +26,7 @@ That integration intended for using with [Qingping Air with wifi](https://www.qi
     ```
 
 * Go to Home Assistant web interface -> `Developer Tools` -> `Check and Restart` and click "Restart" button. It will reload all components in the system.
+
+## Limitations
+
+The component supports only 1 device. If you have more than one device in your account, so I'm waiting for PR :).
