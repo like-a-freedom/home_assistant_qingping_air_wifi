@@ -1,3 +1,4 @@
+import logging
 from typing import Any
 
 from authlib.common.errors import AuthlibHTTPError
@@ -10,6 +11,7 @@ OAUTH2_URL: str = "https://oauth.cleargrass.com"
 OAUTH2_AUTHORIZE_ENDPOINT: str = "/oauth2/token"
 
 REQUEST_TIMEOUT: int = 30
+_LOGGER = logging.getLogger(__name__)
 
 
 class QingpingApi:
@@ -45,7 +47,7 @@ class QingpingApi:
         item.expires_at = token["expires_at"]
         item.save()
 
-    def get_devices(self) -> dict[str, Any]:
+    def get_devices(self) -> dict[str, Any] | None:
         try:
             response = self.oauth_client.get(
                 API_URL + API_DEVICES_ENDPOINT, timeout=REQUEST_TIMEOUT
@@ -64,4 +66,4 @@ class QingpingApi:
                 "pm10": self.data["devices"][0]["data"]["pm10"]["value"],
             }
         except AuthlibHTTPError as err:
-            raise Exception(err)
+            _LOGGER.error(err)
