@@ -28,10 +28,9 @@ class QingpingApi:
                 OAUTH2_URL + OAUTH2_AUTHORIZE_ENDPOINT,
                 grant_type="client_credentials",
             )
-        except AuthlibHTTPError as e:
-            raise Exception(e)
-
-        self.access_token = response["access_token"]
+            self.access_token = response["access_token"]
+        except AuthlibHTTPError as err:
+            _LOGGER.error(err)
 
     def update_token(self, token, refresh_token=None, access_token=None):
         if refresh_token:
