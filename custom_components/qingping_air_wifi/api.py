@@ -50,18 +50,18 @@ class QingpingApi:
             response = self.oauth_client.get(
                 API_URL + API_DEVICES_ENDPOINT, timeout=REQUEST_TIMEOUT
             )
+
+            self.data = response.json()
+            return {
+                "name": self.data["devices"][0]["info"]["product"]["en_name"],
+                "co2": self.data["devices"][0]["data"]["co2"]["value"],
+                "temperature": round(
+                    self.data["devices"][0]["data"]["temperature"]["value"]
+                ),
+                "humidity": round(self.data["devices"][0]["data"]["humidity"]["value"]),
+                "tvoc": self.data["devices"][0]["data"]["tvoc"]["value"],
+                "pm25": self.data["devices"][0]["data"]["pm25"]["value"],
+                "pm10": self.data["devices"][0]["data"]["pm10"]["value"],
+            }
         except AuthlibHTTPError as err:
             raise Exception(err)
-
-        self.data = response.json()
-        return {
-            "name": self.data["devices"][0]["info"]["product"]["en_name"],
-            "co2": self.data["devices"][0]["data"]["co2"]["value"],
-            "temperature": round(
-                self.data["devices"][0]["data"]["temperature"]["value"]
-            ),
-            "humidity": round(self.data["devices"][0]["data"]["humidity"]["value"]),
-            "tvoc": self.data["devices"][0]["data"]["tvoc"]["value"],
-            "pm25": self.data["devices"][0]["data"]["pm25"]["value"],
-            "pm10": self.data["devices"][0]["data"]["pm10"]["value"],
-        }
