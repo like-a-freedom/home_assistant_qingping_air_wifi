@@ -57,7 +57,9 @@ class QingpingApi:
         return {
             "name": self.data["devices"][0]["info"]["product"]["en_name"],
             "co2": self.data["devices"][0]["data"]["co2"]["value"],
-            "temperature": self.data["devices"][0]["data"]["temperature"]["value"],
+            "temperature": round(
+                self.data["devices"][0]["data"]["temperature"]["value"]
+            ),
             "humidity": round(self.data["devices"][0]["data"]["humidity"]["value"]),
             "tvoc": self.data["devices"][0]["data"]["tvoc"]["value"],
             "pm25": self.data["devices"][0]["data"]["pm25"]["value"],
