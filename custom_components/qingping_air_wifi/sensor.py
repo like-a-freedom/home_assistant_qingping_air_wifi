@@ -86,8 +86,8 @@ def setup_platform(
     """Set up the sensor platform."""
     try:
         api_client = QingpingApi(config[CONF_CLIENT_ID], config[CONF_CLIENT_SECRET])
-    except Exception as e:
-        _LOGGER.error(e)
+    except Exception as err:
+        _LOGGER.error(err)
         return
 
     entities = [
@@ -115,9 +115,11 @@ class QingpingAirSensor(SensorEntity):
             _LOGGER.error(err)
 
         if self.data is None:
+            _LOGGER.error(f"Qingping response is: {self.data}")
             return
 
         sensor_type = self.entity_description.key
+
         match sensor_type:
             case "PM25":
                 self._attr_native_value = self.data["pm25"]
